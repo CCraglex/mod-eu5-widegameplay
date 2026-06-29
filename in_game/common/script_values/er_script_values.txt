@@ -1,0 +1,11 @@
+﻿# common/script_values/er_script_values.txt
+
+# Captures the country's actual legislative efficiency modifier total
+er_legislative_efficiency_value = {
+    value = "modifier:legislative_efficiency"
+}
+
+# Captures the country's actual diplomatic reputation modifier total
+er_diplomatic_reputation_value = {
+    value = "modifier:diplomatic_reputation"
+}

@@ -1,0 +1,9 @@
+﻿NCountry = {
+	ANNEX_BASE_COST = 50
+	ANNEX_COST_PER_LOCATION = 10.0
+}
+
+
+NMercenary = {
+	MERCENARY_POOL_AVAILABILITY_SCALE_ARMY = 0.2 # multiplier on how much of a location's population can become recruitable land mercenaries; lower means fewer available
+}

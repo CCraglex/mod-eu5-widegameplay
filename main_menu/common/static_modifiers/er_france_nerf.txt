@@ -1,0 +1,18 @@
+﻿hyw_france_auto_nerf = {
+    diplomatic_annexation_efficiency = 0.15
+    subject_loyalty = 10
+
+    # Your Custom Nerf
+    tax_income_efficiency = -0.05
+	subject_income_modifier = -0.25
+    global_levy_size_modifier = -0.25
+    global_manpower_modifier = -0.25
+    regiment_reinforcement_speed = -0.15
+}
+
+# Applied to France's Vassals
+hyw_french_vassal_nerf = {
+    global_levy_size_modifier = -0.50       
+    global_manpower_modifier = -0.20         
+    tax_income_efficiency = -0.15           
+}

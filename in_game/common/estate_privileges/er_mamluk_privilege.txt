@@ -1,0 +1,63 @@
+﻿p_mamluk_iqta_autonomy = {
+    estate = nobles_estate
+    
+    # potential determines visibility (root = country)
+    potential = {
+        tag = MAM
+    }
+
+    # allow determines if it can be selected (empty/always true if they start with it)
+    allow = {
+    }
+
+    # Modifiers must be placed in country_modifier per the documentation
+    country_modifier = {
+        global_nobles_estate_power = 2
+        nobles_estate_target_satisfaction = -0.1
+
+        global_manpower_modifier = 0.1
+        army_heavy_cavalry_maintenance_cost_modifier = -0.1
+        army_light_cavalry_maintenance_cost_modifier = -0.1
+
+        global_levy_size_modifier = -0.35
+        nobles_estate_max_tax = -0.15
+        land_morale_modifier = -0.25
+    }
+
+    # Evaluates whether you are legally allowed to click the revoke button
+    can_revoke = {
+        # Check if the country asset matches or exceeds the threshold
+        "estate_power(estate_type:crown_estate)" >= 0.35
+    }
+
+    on_deactivate = {
+        trigger_event_non_silently = { id = mamluk_balance.2 }
+    }
+}
+
+p_reformed_mamluk_corps = {
+    estate = nobles_estate
+    
+    # Hide this from the selection menu entirely so it can ONLY 
+    # be unlocked via the on_revoke mechanic above
+    potential = {
+        has_variable = er_mamluk_1
+    }
+
+    allow = {
+        always = yes
+    }
+
+    country_modifier = {
+        # Drastically rein in the nobility's unchecked power
+        global_nobles_estate_power = 0.25
+        nobles_estate_target_satisfaction = 0.05
+
+        # Massive elite military buffs to represent a modernized/loyal force
+        land_morale_modifier = 0.15
+        global_levy_size_modifier = 0.10
+        army_heavy_cavalry_power = 0.15
+        army_initiative = 0.1
+        discipline = 0.1
+    }
+}

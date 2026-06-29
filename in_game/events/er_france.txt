@@ -1,0 +1,101 @@
+﻿# events/er_france.txt
+namespace = french_balance
+
+# --- Event 1: The Setup Penalty Popup ---
+french_balance.1 = {
+    type = country_event
+    hidden = no
+    title = french_balance.1.title
+    desc = french_balance.1.desc
+    outcome = negative
+
+    trigger = {
+        tag = FRA
+        NOT = { has_variable = er_fra_1 }
+    }
+
+    immediate = {
+        set_variable = { name = er_fra_1 value = yes }
+    }
+
+    option = {
+        name = french_balance.1.a
+        
+        add_country_modifier = {
+            modifier = hyw_france_auto_nerf
+        }
+        
+        every_subject = {
+            add_country_modifier = {
+                modifier = hyw_french_vassal_nerf
+            }
+            trigger_event_non_silently = french_balance.4
+        }
+    }
+}
+
+# --- Event 2: The Visible Finishing Victory Popup ---
+french_balance.2 = {
+    type = country_event
+    hidden = no
+    title = french_balance.2.title
+    desc = french_balance.2.desc
+	outcome = positive
+
+    trigger = {
+    }
+
+    immediate = {
+        set_variable = { name = er_fra_2 value = yes }
+
+        remove_country_modifier = {
+            modifier = hyw_france_auto_nerf
+        }
+    }
+
+    option = {
+        name = french_balance.2.a
+        
+        add_prestige = 25
+    }
+}
+
+# --- Event 3: French vassal independence ---
+french_balance.3 = {
+    type = country_event
+    hidden = no
+    title = french_balance.3.title
+    desc = french_balance.3.desc
+	outcome = positive
+    fire_only_once = yes
+
+    trigger = {
+    }
+
+    immediate = {
+    }
+
+    option = {
+        name = french_balance.3.a
+        add_prestige = 25
+    }
+}
+
+# --- Event 4: Vassal Penalty Introduction ---
+french_balance.4 = {
+    type = country_event
+    hidden = no
+    title = french_balance.4.title
+    desc = french_balance.4.desc
+    outcome = negative
+    fire_only_once = yes
+
+    # This event is forced by France's setup event, so no trigger block needed!
+
+    option = {
+        name = french_balance.4.a
+        
+        # A simple tooltip to explicitly show them the debuff they just received
+        custom_tooltip = french_balance_vassal_applied_tt
+    }
+}

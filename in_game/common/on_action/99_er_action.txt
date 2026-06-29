@@ -1,0 +1,57 @@
+﻿# common/on_action/99_on_start.txt
+on_game_start = {
+    on_actions = {
+        delay = { days = 1 }
+        er_start_action
+    }
+}
+
+er_start_action = {
+    # We use an effect block to explicitly jump into the country (c:) scopes, 
+    # then fire the country events using Jomini's specific event effects.
+    effect = {
+        c:FRA = {
+            trigger_event_non_silently = { id = french_balance.1 }
+        }
+        c:MAM = {
+            trigger_event_non_silently = { id = mamluk_balance.1 }
+        }
+    }
+}
+
+on_diplomatic_annexed = {
+    trigger = {
+        c:FRA = {
+            has_variable = er_fra_1
+            NOT = {
+                has_variable = er_fra_2
+            }
+            NOT = {
+                any_subject = {
+                    is_subject = yes
+                }
+            }
+        }
+    }
+
+    events = {
+        french_balance.2
+    }
+}
+
+on_becoming_free = {
+    effect = {
+        # Check if the country actually has the custom French nerf active
+        if = {
+            limit = {
+                has_country_modifier = hyw_french_vassal_nerf
+            }
+            
+            # Remove the hidden mechanical penalties
+            remove_country_modifier = hyw_french_vassal_nerf
+            
+            # Fire the narrative flavor popup event for the player
+            trigger_event_non_silently = french_balance.3
+        }
+    }
+}

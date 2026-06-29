@@ -1,0 +1,42 @@
+﻿# events/mam_iqta_privilege.txt
+namespace = mamluk_balance
+
+mamluk_balance.1 = {
+    type = country_event
+    hidden = no
+    title = mamluk_balance.1.title
+    desc = mamluk_balance.1.desc
+	outcome = negative
+
+    trigger = {
+        tag = MAM
+    }
+
+    immediate = {
+    }
+
+    option = {
+        name = mamluk_balance.1.a
+		grant_estate_privilege = estate_privilege:p_mamluk_iqta_autonomy
+    }
+}
+
+# --- Event 2: The Reformed Mamluk Army Popup ---
+mamluk_balance.2 = {
+    type = country_event
+    hidden = no
+    title = mamluk_balance.2.title
+    desc = mamluk_balance.2.desc
+    outcome = positive
+
+    # This event is triggered manually by script, so it needs no auto-trigger
+    trigger = {
+        NOT = { has_variable = er_mamluk_1 }
+    }
+
+    option = {
+        name = mamluk_balance.2.a
+
+        set_variable = { name = er_mamluk_1 value = yes }
+    }
+}

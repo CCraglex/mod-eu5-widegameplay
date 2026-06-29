@@ -1,0 +1,111 @@
+﻿l_english:
+ AUTO_MODIFIER_NAME_diplo_rep_annexation_impact: "Diplomatic Annexation Impact"
+ AUTO_MODIFIER_DESC_diplo_rep_annexation_impact: "Our standing in the international community directly influences how smoothly we can integrate our subjects."
+ 
+ AUTO_MODIFIER_NAME_admin_efficiency_coring: "Legislative Efficiency Impact"
+ AUTO_MODIFIER_DESC_admin_efficiency_coring: "Optimized administrative channels and experienced bureaucrats drastically reduce the time needed to establish formal state authority over new lands."
+
+# ==========================================
+ # 1. SUBJUGATE NEIGHBOR
+ # ==========================================
+ cb_subjugate_neighbor: "Subjugate Neighbor"
+ cb_subjugate_neighbor_desc: "This neighboring state is vulnerable and strategically vital. We must assert our dominance and force them into perpetual vassalage to secure our borders."
+ 
+ war_goal_subjugate_neighbor: "Enforce Subjugation"
+ war_goal_subjugate_neighbor_desc: "We will march on their capital! The primary goal is to completely break the enemy's will to resist and force $TARGET$ to accept our ultimate overlordship. War goal is to show superiority."
+
+# ==========================================
+ # 2. BORDER FEUDS
+ # ==========================================
+ cb_border_feuds: "Exploit Border Feuds"
+ cb_border_feuds_desc: "Local cross-border skirmishes and historic grievances have given us a perfect excuse to strike. We will use the chaos to push our frontier outward."
+ 
+ war_goal_border_feuds: "Secure the Frontier [PROVINCE.GetName]"
+ war_goal_border_feuds_desc: "Our frontier garrisons are locked in bloody feuds over Claims on [PROVINCE.GetName]. We must occupy this contested region to permanently establish order under our banner."
+
+ # ==========================================
+ # 3. CONQUEST CAMPAIGN
+ # ==========================================
+ cb_conquest_campaign: "Launch Conquest Campaign"
+ cb_conquest_campaign_desc: "A calculated war of raw territorial expansion. We have organized our logistics and administration for a wide-scale campaign to permanently annex their territory."
+ 
+ war_goal_conquest_campaign: "Conquer [PROVINCE.GetName]"
+ war_goal_conquest_campaign_desc: "This campaign is a test of iron and blood. We will seize control of the valuable infrastructure and locations across [PROVINCE.GetName] and integrate them into our realm."
+
+ # ==========================================
+ # 4. CONQUER ENEMY
+ # ==========================================
+ cb_conquest_for_province: "Conquer Enemy"
+ cb_conquest_for_province_desc: "Our deep-seated rivalry with this nation has reached a boiling point. We should use this moment to crush our enemy."
+ 
+ war_goal_conquest_for_province: "Conquer our enemies"
+ war_goal_conquest_for_province_desc: "Our sworn enemies must be brought to heel. By targeting [PROVINCE.GetName], we strike a critical blow to their economy and claim our rightful dominion over their territory."
+
+ # ==========================================
+ # mamluk privilege
+ # ==========================================
+ p_mamluk_iqta_autonomy: "Mamluk Iqta Decentralization"
+ p_mamluk_iqta_autonomy_desc: "The Sultanate relies completely on a militarized caste of freed slaves holding hereditary land grants ($estate_nobility$). While this provides exceptional, highly motivated heavy cavalry, it severely fractures central control and restricts our capacity to mobilize traditional peasant infantry levies."
+
+ mamluk_balance.1.title: "The Demands of the Amirs"
+ mamluk_balance.1.desc: "From our capital in Cairo, the Mamluk households control the absolute center of the Islamic world—yet our grip on power is entirely dependent on the freed slave-soldiers who compromise our military elite. The powerful Amirs are demanding a formal restructuring of their Iqta assignments. If we do not grant them total revenue autonomy over their regional land allocations, they will simply refuse to supply their elite cavalry regiments when the Sultan calls, or worse, plot an execution in the palace corridors."
+ mamluk_balance.1.a: "Satisfy the military households, formalize the Iqta."
+
+ mamluk_balance.2.title: "The Mamluk Modernization"
+ mamluk_balance.2.desc: "By systematically breaking the autonomy of the regional Iqta lords, the Crown has finally reasserted dominance over the military state.\n\nThe old, corrupt system is shattered. In its place, a reorganized, highly centralized military corps rises to protect the realm. \n A new privilege is unlocked."
+ mamluk_balance.2.a: "A new era begins for our cavalry force!"
+
+ p_reformed_mamluk_corps: "Reformed Mamluk Corps"
+ p_reformed_mamluk_corps_desc: "By sweeping away the decentralized and corrupt regional Iqta system, the central crown has completely restructured our elite forces.\n\nNo longer autonomous warlords extracting local taxes, the modernized Mamluk cavalry is now fully professional, tightly integrated into the state apparatus, and intensely loyal to the centralized command of the Sultan. This elite corps forms the unshakeable iron vanguard of our empire."
+ # ==========================================
+ # france nerf
+ # ==========================================
+ STATIC_MODIFIER_NAME_hyw_france_auto_nerf: "Decentralization Exploited"
+ hyw_france_auto_nerf_desc: "Due to our increased decentralization, our subjects and nobles refuse to obey the power of the crown and enjoy their high autonomy to the fullest. We must crush their petty dreams and centralize our state!"
+
+ # France
+ french_balance.1.title: "A Decentralized Kingdom..."
+ french_balance.1.desc: "The strength of France is vast yet our extreme decentralization is still causing us instability and weakness. Our vassals are as far as they can be from us. Our nobles do not respect us. And on top of that, there are vultures seeking to steal our beautiful kingdom from us. The task is big yet our strength is bigger. We should start centralizing our realm as fast as possible... \n\n We must annex all of our subjects to get rid of our shackles."
+ french_balance.1.a: "We will prevail!"
+
+ french_balance.2.title: "One King, One Law, One Realm"
+ french_balance.2.desc: "The era of fragmented authority is over! The stubborn appanages and independent lords who once divided the lands of France have finally been brought fully under the authority of the central Crown. From Flanders to the Pyrenees, the realm speaks with a single voice, and the true power of France is unleashed."
+ french_balance.2.a: "Vive le Roi! France is unified!"
+ 
+ disloyal_subject_refuses_offensive_war_tt: "They are disloyal and refuse to join our offensive campaigns."
+ disloyal_subject_refuses_defensive_war_tt: "They are disloyal and refuse to lift a finger to defend the Crown."
+
+ french_balance.3.title: "Sovereignty Restored"
+ french_balance.3.desc: "With our ties to our former overlord severed, the heavy restrictions placed upon our realm have finally dissolved. Our local lords are no longer forced to restrict their levies, and our merchants are no longer sending a portion of our wealth to a foreign capital. Our nation's full potential is finally unlocked!"
+ french_balance.3.a: "We answer to no one but ourselves."
+
+ french_balance_modifier_removed_tt: "The French subject penalties have been completely lifted."
+
+ french_balance.4.title: "The Burden of the Crown"
+ french_balance.4.desc: "As a subject bound to the French Crown, our autonomy is heavily restricted by the demands of Paris. To ensure the realm's stability—and to prevent our own local lords from growing powerful enough to threaten the throne—strict limits have been placed upon our domains. Our levy sizes are capped, our manpower pools heavily restricted, and our local tax collections face heavy scrutiny. Until we find a way to break free from this arrangement, we must make do with less."
+ french_balance.4.a: "We must endure this... for now."
+ french_balance_vassal_applied_tt: "Gained the modifier §RFrench Vassal Penalties§!, significantly reducing our Max Levies, Manpower pool, and Tax Efficiency."
+
+ STATIC_MODIFIER_NAME_hyw_french_vassal_nerf: "French Vassal Penalties"
+ hyw_french_vassal_nerf_desc: "Heavy limits placed upon the local nobility to ensure loyalty to the French Crown."
+
+ #russia
+ cb_unify_the_rus: "Unification of the Rus'"
+ cb_unify_the_rus_desc: "The fragmentation of our people must end. By ancient right and shared blood, we seek to bring all lands of the Russian culture group under a single sovereign throne."
+
+ war_goal_unification_of_russia: "Seize the Capital"
+ war_goal_unification_of_russia_desc: "To unite the Rus', we must strike at the heart of their authority. Capturing and holding the enemy's capital will break their political will and prove who is the true ruler of all Russia."
+
+
+# hre
+ cb_war_on_empire: "Imperial Conquest"
+ cb_war_on_empire_desc: "As an outsider, we seek to break into the boundaries of the Empire and wrest land from its princes."
+ 
+ cb_hre_conflict: "Imperial Rival Feud"
+ cb_hre_conflict_desc: "A formal dispute settled by arms against a hated regional rival within the Holy Roman Empire."
+
+ war_goal_war_on_empire: "Subjugate the Imperial Frontier"
+ war_goal_war_on_empire_desc: "Our primary objective is to conquer provinces along the outer rim of the Holy Roman Empire. War goal is to occupy capital."
+ 
+ war_goal_hre_feud: "Settle the Princely Feud"
+ war_goal_hre_feud_desc: "We are fighting to enforce our dynastic dominance and humiliate our rival within the legal frameworks of the Empire. War goal is to occupy capital."

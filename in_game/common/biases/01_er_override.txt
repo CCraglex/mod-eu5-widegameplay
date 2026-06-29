@@ -1,0 +1,7 @@
+﻿REPLACE:opinion_fighting_same_war = {
+	value = 0
+}
+
+opinion_hre_occupied = {
+	value = -10
+}

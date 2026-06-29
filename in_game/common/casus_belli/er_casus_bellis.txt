@@ -1,0 +1,296 @@
+﻿cb_subjugate_neighbor = {
+    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
+    create_visible = {
+
+        scope:target = {
+            is_real_country = yes
+        }
+
+        NOT = { 
+            scope:target = { 
+                is_member_of_international_organization = international_organization:hre 
+            } 
+        }
+
+        OR = {
+            current_age = age_1_traditions
+            current_age = age_2_renaissance
+        }
+
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+    }
+
+    # 3. Declaration: Ensure you can actually click the declare button
+    declare_enabled = {
+    }
+
+    war_goal_type = subjugate_neighbor
+    can_expire = yes
+}
+
+cb_border_feuds = {
+    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
+    create_visible = {
+        scope:target = {
+            is_real_country = yes
+        }
+        
+        NOT = { 
+            scope:target = { 
+                is_member_of_international_organization = international_organization:hre 
+            } 
+        }
+
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+
+        current_age = age_2_renaissance
+    }
+
+    create_enabled = {
+    }
+
+    declare_enabled = {
+    }
+
+    province = {
+        # Any province owned by the target that borders you is valid to target
+        owner = scope:recipient
+        any_location_in_province = {
+            is_neighbor_of = scope:actor
+        }
+    }
+
+    war_goal_type = border_feuds
+    can_expire = yes
+}
+
+cb_conquest_campaign = {
+    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
+    create_visible = {
+        scope:target = {
+            is_real_country = yes
+        }
+        
+        NOT = { 
+            scope:target = { 
+                is_member_of_international_organization = international_organization:hre 
+            } 
+        }
+
+        OR = {
+            current_age = age_3_discovery
+            current_age = age_4_reformation
+        }
+    
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+    }
+
+    # 3. Declaration: Ensure you can actually click the declare button
+    declare_enabled = {
+    }
+
+    # 4. Province Target Validation: Which provinces can be selected as the war goal?
+    # According to the readme: root = province, scope:actor = you, scope:recipient = target
+    province = {
+        # Any province owned by the target that borders you is valid to target
+        owner = scope:recipient
+        any_location_in_province = {
+            is_neighbor_of = scope:actor
+        }
+    }
+
+    war_goal_type = conquest_campaign
+    can_expire = yes
+}
+
+cb_conquest_for_province = {
+    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
+    create_visible = {
+        scope:target = {
+            is_real_country = yes
+        }
+
+        NOT = { 
+            scope:target = { 
+                is_member_of_international_organization = international_organization:hre 
+            } 
+        }
+
+        OR = {
+            current_age = age_5_absolutism
+            current_age = age_6_revolutions
+        }
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+    }
+
+    declare_enabled = {
+    }
+
+    war_goal_type = conquest_for_province
+    can_expire = yes
+}
+
+### Russia
+
+cb_unify_the_rus = {
+    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
+    create_visible = {
+        always = yes
+        OR = {
+            NOT = {
+                current_age = age_1_traditions
+                current_age = age_2_renaissance
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+        # Check that the target isn't yourself
+        NOT = { this = scope:target }
+        OR = {
+            NOT = {
+                current_age = age_1_traditions
+                current_age = age_2_renaissance
+            }
+        }
+
+		culture ?= {
+			has_culture_group = culture_group:russian_group
+		}
+
+        # 2. Defender (target country) belongs to the Russian culture group
+        scope:target = {
+            is_real_country = yes
+
+            culture ?= {
+                has_culture_group = culture_group:russian_group
+            }
+        }
+
+        # 3. Prevent self-targeting or targeting your own vassals
+        NOT = { scope:target = root }
+        NOT = { scope:target = { is_subject_of = root } }
+        
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    declare_enabled = {
+    }
+
+    	
+	ai_will_do = 30
+	ai_subjugation_desire = -100
+    
+    war_goal_type = unification_of_russia
+    can_expire = yes
+}
+
+### HRE Invader
+
+cb_war_on_empire = {
+    create_visible = {
+        NOT = {
+            is_member_of_international_organization = international_organization:hre
+        }
+
+        scope:target = {
+            is_member_of_international_organization = international_organization:hre
+            is_real_country = yes
+        }
+
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    create_enabled = {
+    }
+
+    declare_enabled = {
+    }
+    
+    war_goal_type = war_on_empire
+    can_expire = yes
+}
+
+### HRE inside conflict
+
+cb_hre_conflict = {
+    create_visible = {
+        
+        is_member_of_international_organization = international_organization:hre
+
+        scope:target = {
+            is_member_of_international_organization = international_organization:hre
+            is_real_country = yes
+        }
+
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+        scope:target = {
+            is_rival_of = scope:actor
+        }
+    }
+
+    declare_enabled = {
+    }
+    
+    war_goal_type = hre_feud
+    can_expire = yes
+}

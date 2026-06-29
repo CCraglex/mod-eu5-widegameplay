@@ -1,0 +1,34 @@
+﻿REPLACE:antagonism_declared_war_no_cb = {
+	value = 3
+	yearly_decay = 1
+}
+
+REPLACE:antagonism_peace_treaty_demands = {
+	value = 0.5 #multiplied by total worth of locations etc
+	yearly_decay = 3
+}
+
+REPLACE:antagonism_taking_land = {
+	value = 0.5 #multiplied by total worth of locations etc
+	yearly_decay = 2
+}
+
+REPLACE:antagonism_subjugated_nation = {
+	value = 0.35 #multiplied by total worth of locations etc, so for subjugating it's half the value
+	yearly_decay = 2
+}
+
+REPLACE:antagonism_took_subjugated_nation = {
+	value = 0.35 #multiplied by total worth of locations etc, so for taking an already subjugated nation it's less than half the value
+	yearly_decay = 2
+}
+
+REPLACE:antagonism_improve_relation = {
+	value = -50
+	yearly_decay = 2
+}
+
+REPLACE:antagonism_improve_relation_reversed = {
+	value = 0
+	yearly_decay = 1
+}

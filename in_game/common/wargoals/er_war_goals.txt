@@ -1,0 +1,107 @@
+﻿#age 1 - 2
+subjugate_neighbor = {
+	type = superiority
+
+	attacker = {
+		conquer_cost = 2
+		subjugate_cost = 0.75
+
+		antagonism = 1.25
+	}
+	defender = {
+		conquer_cost = 1.5
+		antagonism = 0.75
+	}
+}
+
+#age 2
+border_feuds = {
+	type = take_province
+
+	attacker = {
+		conquer_cost = 1.25
+		subjugate_cost = 1.25
+
+		antagonism = 1
+	}
+	defender = {
+		conquer_cost = 1.0
+
+		antagonism = 1.0
+	}
+}
+
+#age 3 - 4
+conquest_campaign = {
+	type = take_province
+
+	attacker = {
+		conquer_cost = 1
+		subjugate_cost = 1
+
+		antagonism = 1.0
+	}
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 0.75
+
+		antagonism = 0.75
+	}
+}
+
+#age 5 - 6
+conquest_for_province = {
+	type = take_capital
+
+	attacker = {
+		conquer_cost = 0.85
+		antagonism = 0.9
+	}
+	defender = {
+		conquer_cost = 1.0
+		antagonism = 1
+	}
+}
+
+
+#rus unify
+unification_of_russia = {
+	type = take_capital
+
+	attacker = {
+		conquer_cost = 0.75
+		antagonism = 0.75
+	}
+	defender = {
+		conquer_cost = 1
+		antagonism = 1
+	}
+}
+
+#HRE invader
+war_on_empire = {
+	type = take_capital
+
+	attacker = {
+		conquer_cost = 1
+		antagonism = 3
+	}
+	defender = {
+		conquer_cost = 1
+		antagonism = 4
+	}
+}
+
+#hre inside conflict
+hre_feud = {
+	type = take_capital
+
+	attacker = {
+		conquer_cost = 1.5
+		antagonism = 1.5
+	}
+	defender = {
+		conquer_cost = 1.25
+		antagonism = 1.25
+	}
+}
