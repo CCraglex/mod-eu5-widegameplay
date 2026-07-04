@@ -14,12 +14,12 @@ REPLACE:antagonism_taking_land = {
 }
 
 REPLACE:antagonism_subjugated_nation = {
-	value = 0.35 #multiplied by total worth of locations etc, so for subjugating it's half the value
+	value = 0.25 #multiplied by total worth of locations etc, so for subjugating it's half the value
 	yearly_decay = 2
 }
 
 REPLACE:antagonism_took_subjugated_nation = {
-	value = 0.35 #multiplied by total worth of locations etc, so for taking an already subjugated nation it's less than half the value
+	value = 0.25 #multiplied by total worth of locations etc, so for taking an already subjugated nation it's less than half the value
 	yearly_decay = 2
 }
 
