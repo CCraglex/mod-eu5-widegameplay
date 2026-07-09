@@ -76,8 +76,8 @@
 	
 	maximum_religious_influence = 100
 	
-	global_pop_assimilation_speed = 0.002
-	global_pop_conversion_speed = 0.002
+	global_pop_assimilation_speed = 0.005
+	global_pop_conversion_speed = 0.01
 	
 	diplomatic_range = 1000
 	naval_range = 1000
@@ -255,7 +255,8 @@ REPLACE:war_exhaustion_impact = {
 
 	land_morale_modifier = -0.025
 	naval_morale_modifier = -0.025
-	global_defensive = -0.05
+	
+	global_defensive = -0.025
 	
 	
 	global_production_efficiency = scaled_production_efficiency_penalty

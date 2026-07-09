@@ -90,8 +90,12 @@ french_balance.4 = {
     outcome = negative
     fire_only_once = yes
 
-    # This event is forced by France's setup event, so no trigger block needed!
+    trigger = {
+    }
 
+    immediate = {
+    }
+    
     option = {
         name = french_balance.4.a
         

@@ -4,7 +4,7 @@ admin_efficiency_coring = {
     scales_with = {
         # Points directly to the script value we made above
         value = er_legislative_efficiency_value
-        multiply = 0.75
+        multiply = 1
     }
 
     global_integration_speed_modifier = 1.0
@@ -14,7 +14,7 @@ diplo_rep_annexation_impact = {
     scales_with = {
         # Must be bracketed to prevent the parser from choking on the next line
         value = er_diplomatic_reputation_value
-        multiply = 0.125
+        multiply = 0.075
     }
     
     annexation_speed_base = 1

@@ -1,0 +1,52 @@
+namespace = er_horde
+
+# --- LOSER EVENT ---
+er_horde.1 = {
+    type = country_event
+    hidden = no
+    title = er_horde.1.title
+    desc = er_horde.1.desc
+    outcome = negative
+
+    # The game checks this first. If it's false, the event is discarded safely.
+    trigger = {
+        scope:loser = {
+            government_type = government_type:steppe_horde
+        }
+    }
+
+    # This ensures the event actually pops up on the screen of the loser
+    immediate = {
+        # If the on_action doesn't automatically root-scope the loser, 
+        # you can trigger it specifically or let the trigger filter it.
+    }
+    
+    option = {
+        name = er_horde.1.a
+        scope:loser = {
+            add_government_power = -25
+        }
+    }
+}
+
+# --- WINNER EVENT ---
+er_horde.2 = {
+    type = country_event
+    hidden = no
+    title = er_horde.2.title
+    desc = er_horde.2.desc
+    outcome = positive
+
+    trigger = {
+        scope:winner = {
+            government_type = government_type:steppe_horde
+        }
+    }
+
+    option = {
+        name = er_horde.2.a
+        scope:winner = {
+            add_government_power = 25
+        }
+    }
+}

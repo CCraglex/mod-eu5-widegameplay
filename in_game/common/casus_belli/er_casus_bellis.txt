@@ -12,10 +12,7 @@
             } 
         }
 
-        OR = {
-            current_age = age_1_traditions
-            current_age = age_2_renaissance
-        }
+        current_age = age_1_traditions
 
         OR = {
             is_neighbor_of = scope:target
@@ -36,6 +33,20 @@
 
     war_goal_type = subjugate_neighbor
     can_expire = yes
+
+    ai_will_do = {
+        add = { value = 20 }
+
+        if = {
+            limit = {
+                current_year >= 1360
+            }
+            add = {
+                desc = "obsolete"
+                value = -200
+            }
+        }
+    }
 }
 
 cb_border_feuds = {
@@ -78,6 +89,20 @@ cb_border_feuds = {
 
     war_goal_type = border_feuds
     can_expire = yes
+
+    ai_will_do = {
+        add = { value = 80 }
+
+        if = {
+            limit = {
+                current_year >= 1537
+            }
+            add = {
+                desc = "obsolete"
+                value = -200
+            }
+        }
+    }
 }
 
 cb_conquest_campaign = {
@@ -127,6 +152,10 @@ cb_conquest_campaign = {
 
     war_goal_type = conquest_campaign
     can_expire = yes
+
+    ai_will_do = {
+        add = { value = 50 }
+    }
 }
 
 cb_conquest_for_province = {
@@ -164,6 +193,10 @@ cb_conquest_for_province = {
 
     war_goal_type = conquest_for_province
     can_expire = yes
+    
+    ai_will_do = {
+        add = { value = 50 }
+    }
 }
 
 ### Russia
@@ -214,6 +247,10 @@ cb_unify_the_rus = {
                 NOT = { is_subject_type = tributary }
                 is_neighbor_of = scope:target
             }
+        }
+
+        ai_will_do = {
+            add = 500
         }
     }
 

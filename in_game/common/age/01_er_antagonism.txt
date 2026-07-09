@@ -8,8 +8,8 @@
 	modifier = {
 		lack_of_control_impact_on_warscore = 0.1
 		
-		antagonism_religion_influence = 0.55
-		antagonism_culture_influence = 0.15
+		antagonism_religion_influence = 0.35
+		antagonism_culture_influence = 0.35
 	}
 
 	goods_demand = {
@@ -69,8 +69,8 @@ REPLACE:age_2_renaissance = {
 
 		global_navy_levy_size_modifier = -0.2
 
-		antagonism_religion_influence = 0.55
-		antagonism_culture_influence = 0.15
+		antagonism_religion_influence = 0.35
+		antagonism_culture_influence = 0.35
 	}
 
 	goods_demand = {
@@ -128,8 +128,8 @@ REPLACE:age_3_discovery = {
 
 		global_navy_levy_size_modifier = -0.75
 
-		antagonism_religion_influence = 0.55
-		antagonism_culture_influence = 0.25
+		antagonism_religion_influence = 0.35
+		antagonism_culture_influence = 0.35
 	}
 
 	goods_demand = {
@@ -188,7 +188,7 @@ REPLACE:age_4_reformation = {
 		global_navy_levy_size_modifier = -1.0
 
 		antagonism_religion_influence = 0.85
-		antagonism_culture_influence = 0.15
+		antagonism_culture_influence = 0.35
 		antagonism_government_type_influence = 0.1
 	}
 
@@ -260,8 +260,8 @@ REPLACE:age_5_absolutism = {
 
 		global_navy_levy_size_modifier = -2.0
 
-		antagonism_religion_influence = 0.45
-		antagonism_culture_influence = 0.25
+		antagonism_religion_influence = 0.2
+		antagonism_culture_influence = 0.2
 		antagonism_government_type_influence = 0.2
 		antagonism_societal_value_influence = 0.1
 	}
@@ -330,7 +330,7 @@ REPLACE:age_6_revolutions = {
 
 		subject_pays_colonial_cost_modifier = 2.0
 
-		antagonism_culture_influence = 0.35
+		antagonism_culture_influence = 0.5
 
 		antagonism_societal_value_influence = 0.2
 		antagonism_government_type_influence = 0.25

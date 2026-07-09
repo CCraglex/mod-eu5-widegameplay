@@ -1,0 +1,11 @@
+############################
+# Levy Scales
+############################
+levy_generic_infantry_size = 0.01
+levy_generic_noble_cavalry_size = 0.05
+
+
+
+
+levy_ship_size = 0.01
+levy_ship_size_special = 0.1

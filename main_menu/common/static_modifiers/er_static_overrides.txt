@@ -3,5 +3,5 @@ REPLACE:province_base = {
     game_data = {
         category = province
     }
-    province_integration_speed = 0.5
+    province_integration_speed = 0.25
 }

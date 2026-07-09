@@ -7,3 +7,17 @@
 NMercenary = {
 	MERCENARY_POOL_AVAILABILITY_SCALE_ARMY = 0.2 # multiplier on how much of a location's population can become recruitable land mercenaries; lower means fewer available
 }
+
+NCombat = {
+	DAYS_PER_SIEGE_PHASE = 20
+}
+
+NAI = {
+	AI_HIGH_CONQUER_DESIRE_THRESHOLD = 0.25
+}
+
+#???
+NPop = {
+	ARMY_LEVY_SIZE_IMPACT_SUPPORT = 0.5
+	NAVY_LEVY_SIZE_IMPACT_SUPPORT = 1.25
+}

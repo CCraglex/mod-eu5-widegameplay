@@ -109,3 +109,18 @@
  
  war_goal_hre_feud: "Settle the Princely Feud"
  war_goal_hre_feud_desc: "We are fighting to enforce our dynastic dominance and humiliate our rival within the legal frameworks of the Empire. War goal is to occupy capital."
+
+
+#horde
+er_horde.1.title: "A Humiliating Defeat"
+er_horde.1.desc: "Our warriors have returned from the battlefield defeated. The clans question our leadership, old rivalries resurface, and confidence in the ruling elite begins to erode. Unless new victories restore our prestige, the unity of the Horde will continue to weaken."
+er_horde.1.a: "The Horde must endure."
+
+er_horde.2.title: "Victory Strengthens the Horde"
+er_horde.2.desc: "Our banners fly proudly over the battlefield, and our enemies have been scattered. The victorious campaign has enriched our warriors and reaffirmed the authority of our leadership. The clans rally behind our rule as the Horde stands more united than before."
+er_horde.2.a: "Our strength is unquestioned."
+
+#hyw:
+independence_movement_hyw_eng_fra: "England supporting NON French vassals during HYW"
+independence_movement_hyw_fra_eng: "France supporting NON English vassals during HYW"
+independence_movement_hyw: "We are not France or England during HYW"
