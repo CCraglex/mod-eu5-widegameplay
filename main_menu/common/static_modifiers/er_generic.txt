@@ -1,0 +1,86 @@
+﻿er_rising_nation_modifier = {
+	game_data = { 
+		category = country
+		decaying = yes
+	}
+
+	monthly_gold_income = 10
+	tax_income_efficiency = 0.1
+	global_tribal_promotion = 1.0
+	research_speed_modifier = 0.25
+}
+
+er_kyiv_nerf_modifier = {
+	game_data = { 
+		category = country
+		decaying = yes
+	}
+	
+	global_crown_estate_power = -0.5
+	
+	global_estate_target_satisfaction = -0.1
+	global_estate_max_tax = -0.1
+
+    monthly_religious_influence = -0.25
+
+	research_speed_modifier = -0.5
+	stability_cost_efficiency = -0.5
+    stability_investment = -0.1
+    
+	global_peasant_enfranchisment = -0.33
+    global_army_levy_size_modifier = -0.33
+    
+    selling_efficiency = -0.05
+    tax_income_efficiency = -0.1
+}
+
+
+REPLACE:prosperity = {
+	game_data = {
+		category = location
+	}
+	local_monthly_development = 0.004
+	local_migration_attraction = 0.1
+	local_life_expectancy = 10
+	local_population_growth = 0.002
+	
+	local_mercenaries_modifier = -0.5
+	local_pop_assimilation_speed = 0.005
+	local_pop_conversion_speed = 0.005
+}
+
+REPLACE:is_great_power = {
+	game_data = {
+		category = country
+	}
+	monthly_diplomats = 0.2
+	power_projection = 10
+	monthly_prestige = 0.25
+	mercenary_range_modifier = 0.5
+	creditworthiness_bonus = 0.1
+	max_bonds = 2
+
+	allowed_enforce_peace = yes
+	allowed_intervene_in_war = yes
+
+	alliance_weight = 1.0
+	union_weight = 0.75
+}
+
+REPLACE:is_regional_power = {
+	game_data = {
+		category = country
+	}
+	monthly_diplomats = 0.1
+	power_projection = 5
+	monthly_prestige = 0.10
+	mercenary_range_modifier = 0.25
+	creditworthiness_bonus = 0.1
+	max_bonds = 1
+
+	allowed_enforce_peace = yes
+	allowed_intervene_in_war = yes
+
+	alliance_weight = 0.5
+	union_weight = 0.25
+}

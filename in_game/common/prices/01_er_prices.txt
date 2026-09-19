@@ -1,0 +1,6 @@
+﻿REPLACE:create_colonial_charter = {
+	gold = 25
+
+	scaled_gold = 5
+	max_scale = 250
+}

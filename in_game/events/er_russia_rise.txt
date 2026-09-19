@@ -1,0 +1,34 @@
+﻿namespace = er_russia_rise
+
+er_russia_rise.1 = {
+    type = country_event
+    hidden = no
+    title = er_russia_rise.1.title
+    desc = er_russia_rise.1.desc
+    outcome = positive
+
+	trigger = {	}
+	
+    option = {
+        name = er_russia_rise.1.a
+
+        random_province = {
+			limit = {
+				any_location_in_province = {
+					integration_level = conquered
+				}
+			}
+
+			save_scope_as = target_province
+		}
+
+		scope:target_province = {
+			every_location_in_province = {
+				limit = {
+					integration_level = conquered
+				}
+				change_integration_level = integrated
+			}		
+		}
+    }
+}

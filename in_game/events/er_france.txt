@@ -51,6 +51,18 @@ french_balance.2 = {
         remove_country_modifier = {
             modifier = hyw_france_auto_nerf
         }
+
+		region:france_region = {
+			every_location_in_region = {
+				limit = {
+					OR = {
+						NOT = { owner ?= root }
+						NOT = { owner ?= { is_subject_of = root } }
+					}
+				}
+				add_core = root
+			}
+		}
     }
 
     option = {

@@ -1,0 +1,34 @@
+﻿REPLACE:fall_of_delhi_end_trigger = {
+	OR = {
+
+		AND = {
+			sub_continent:south_asia = {
+				any_ownable_location_in_sub_continent = {
+					owner = c:DLH
+					count > 500
+				}
+			}
+
+			NOT = {
+				c:DLH = {
+					any_subject = {
+						is_disloyal_subject = yes
+					}
+				}
+			}
+		}
+
+
+		custom_tooltip = {
+			text = has_decided_to_cede_territories_tt
+			c:DLH = { has_variable = dlh_surrendered_territories_var }
+		}
+		custom_tooltip = {
+			text = dissolution_of_delhi_started_tt
+			c:DLH = {
+				any_active_disaster = { disaster_type = disaster_type:dissolution_of_delhi }
+			}
+		}
+		NOT = { country_exists = c:DLH }
+	}
+}

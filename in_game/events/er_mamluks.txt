@@ -29,7 +29,6 @@ mamluk_balance.2 = {
     desc = mamluk_balance.2.desc
     outcome = positive
 
-    # This event is triggered manually by script, so it needs no auto-trigger
     trigger = {
         NOT = { has_variable = er_mamluk_1 }
     }

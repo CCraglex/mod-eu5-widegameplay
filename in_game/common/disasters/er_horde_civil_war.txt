@@ -9,7 +9,7 @@
 		is_rebel_country = no
 		is_subject = no
 		OR = {
-			horde_unity <= 33
+			horde_unity <= 50
 		}
 		in_civil_war = no
 		OR = {

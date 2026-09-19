@@ -1,9 +1,8 @@
-﻿p_mamluk_iqta_autonomy = {
+﻿er_indian_decentralization = {
     estate = nobles_estate
-    
-    # potential determines visibility (root = country)
+
     potential = {
-        tag = MAM
+        has_estate_privilege = estate_privilege:er_indian_decentralization
     }
 
     # allow determines if it can be selected (empty/always true if they start with it)
@@ -13,17 +12,16 @@
     # Modifiers must be placed in country_modifier per the documentation
     country_modifier = {
         global_nobles_estate_power = 0.5
-        nobles_estate_target_satisfaction = 0.05
-        peasants_estate_target_satisfaction = -0.25
-        global_army_levy_size_modifier = -0.33
+        subject_loyalty = 15
+		diplomatic_capacity = 1
 
-        global_estate_max_tax = -0.05
-        tax_income_efficiency = -0.1
+		global_distance_from_capital_speed_propagation = -0.6
+		global_levy_size_modifier = -0.5
     }
 
     # Evaluates whether you are legally allowed to click the revoke button
     can_revoke = {
         # Check if the country asset matches or exceeds the threshold
-        "estate_power(estate_type:crown_estate)" >= 0.3
+        "estate_power(estate_type:crown_estate)" >= 0.45
     }
 }

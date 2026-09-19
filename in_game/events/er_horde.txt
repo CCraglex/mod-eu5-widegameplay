@@ -1,4 +1,4 @@
-namespace = er_horde
+﻿namespace = er_horde
 
 # --- LOSER EVENT ---
 er_horde.1 = {
@@ -11,6 +11,7 @@ er_horde.1 = {
     # The game checks this first. If it's false, the event is discarded safely.
     trigger = {
         scope:loser = {
+            this = scope:loser
             government_type = government_type:steppe_horde
         }
     }
@@ -24,7 +25,7 @@ er_horde.1 = {
     option = {
         name = er_horde.1.a
         scope:loser = {
-            add_government_power = -25
+            add_government_power = -10
         }
     }
 }
@@ -39,6 +40,7 @@ er_horde.2 = {
 
     trigger = {
         scope:winner = {
+            this = scope:winner
             government_type = government_type:steppe_horde
         }
     }
@@ -46,7 +48,7 @@ er_horde.2 = {
     option = {
         name = er_horde.2.a
         scope:winner = {
-            add_government_power = 25
+            add_government_power = 5
         }
     }
 }

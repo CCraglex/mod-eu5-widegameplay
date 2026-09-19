@@ -1,0 +1,121 @@
+﻿REPLACE:create_uc_bey = {
+	type = situation
+	show_message = no
+	potential = {
+		scope:actor = {
+			has_reform = government_reform:anatolian_beylik
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+			any_subject = {
+				is_subject_type = vassal
+				is_disloyal_subject = no
+				monthly_manpower > 0
+				at_war = no
+			}
+		}
+	}
+	ai_tick = never
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 12
+	price = price:rto_create_uc_bey
+
+	cooldown = {
+		type = create_uc_bey
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:rise_of_the_ottomans = this
+			situation_is_active = yes
+			var:strongest_beylik_variable = scope:actor
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_subject = {
+					limit = {
+						is_subject_type = vassal
+					}
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_subject
+		name = "choose_country"
+		column = { data = name }
+		column = { data = expected_army_size }
+		column = { data = expected_navy_size }
+		enabled = {
+			is_disloyal_subject = no
+			monthly_manpower > 0
+			at_war = no
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = { exists = scope:target_subject }
+			scope:actor ?= { trigger_event_non_silently = er_tur.2 }
+		}
+		custom_tooltip = create_uc_bey_tt
+	}
+
+	ai_will_do = {
+		# Disabled via ai tick never for now as it causes problems
+		add = 25
+		if = {
+			limit = { exists = scope:target_subject }
+			subtract = {
+				desc = "current number of uc beys"
+				scope:actor = {
+					every_subject = {
+						limit = { is_subject_type = uc_bey }
+						add = 10
+					}
+				}
+			}
+			add = {
+				desc = "RELATIVE_STRENGTH"
+				value = 100
+				multiply = "scope:target_subject.relative_strength(scope:actor)"
+			}
+			add = {
+				desc = "[target_subject.GetName] [monthly_manpower|e]"
+				value = scope:target_subject.monthly_manpower
+				multiply = 1000
+			}
+			add = {
+				desc = "Our [provinces|e]"
+				value = scope:actor.num_provinces
+			}
+			subtract = {
+				desc = "we want less decentralization"
+				value = scope:actor.modifier:monthly_towards_decentralization
+				multiply = 20
+			}
+		}
+		else = {
+			add = {
+				value = 25
+				desc = BASE_VALUE
+			}
+		}
+	}
+}
+

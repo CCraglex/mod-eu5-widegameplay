@@ -1,14 +1,29 @@
 ﻿# common/on_action/99_on_start.txt
 on_game_start = {
     on_actions = {
-        delay = { days = 1 }
+        
         er_start_action
+
+        delay = { days = 1 }
+        er_start_action_delyaed
+
+        delay = { days = 10 }
+        er_random_init
     }
 }
 
 er_start_action = {
-    # We use an effect block to explicitly jump into the country (c:) scopes, 
-    # then fire the country events using Jomini's specific event effects.
+    effect = {
+        c:KIE = {
+			add_country_modifier = { 
+				modifier = er_kyiv_nerf_modifier
+				years = 100
+			}
+        }
+    }
+}
+
+er_start_action_delyaed = {
     effect = {
         c:FRA = {
             trigger_event_non_silently = { id = french_balance.1 }
@@ -18,6 +33,7 @@ er_start_action = {
         }
     }
 }
+
 
 on_diplomatic_annexed = {
     trigger = {
@@ -39,6 +55,43 @@ on_diplomatic_annexed = {
     }
 }
 
+on_ending_war = {
+    events = {
+        er_horde.1 # Loser event
+        er_horde.2 # Winner event
+    }
+}
+
+on_dependency_gained = {
+    effect = {
+        if = {
+            limit = {
+                culture = { has_culture_group = culture_group:russian_group }
+            }
+
+            save_scope_as = new_subject
+
+            every_country = {
+                limit = {
+                    culture = { has_culture_group = culture_group:russian_group }
+                }
+
+                remove_opinion = {
+                    target = scope:new_subject
+                    modifier = rus_unification_feud
+                }
+
+                scope:new_subject = {
+                    remove_opinion = {
+                        target = prev
+                        modifier = rus_unification_feud
+                    }
+                }
+            }
+        }
+    }
+}
+
 on_becoming_free = {
     effect = {
         # Check if the country actually has the custom French nerf active
@@ -53,12 +106,119 @@ on_becoming_free = {
             # Fire the narrative flavor popup event for the player
             trigger_event_non_silently = french_balance.3
         }
+
+        # 2. New Russian Feud Re-addition
+        if = {
+            limit = {
+                culture = { has_culture_group = culture_group:russian_group }
+            }
+
+            save_scope_as = newly_free_rus
+
+            every_country = {
+                limit = {
+                    culture = { has_culture_group = culture_group:russian_group }
+                    # Prevent the country from trying to add an opinion modifier to itself
+                    NOT = { this = scope:newly_free_rus }
+                }
+
+                # Other Russian country gets the feud modifier toward the newly free country
+                add_opinion = {
+                    target = scope:newly_free_rus
+                    modifier = rus_unification_feud
+                }
+
+                # Newly free country gets the feud modifier toward the other Russian country
+                scope:newly_free_rus = {
+                    add_opinion = {
+                        target = prev
+                        modifier = rus_unification_feud
+                    }
+                }
+            }
+        }
     }
 }
 
-on_ending_war = {
-    events = {
-        er_horde.1 # Loser event
-        er_horde.2 # Winner event
+er_random_init = {
+    on_actions = {
+        delay = { years = 5 }
+        er_random_country
+        er_random_init
+    }
+}
+
+er_random_country = {
+
+    effect = {
+
+        random_location_in_the_world = {
+            limit = {
+                OR = {
+                    #africa ->
+                    region = region:central_africa_region
+                    region = region:kongo_region
+                    region = region:swahili_coast_region
+                    region = region:great_lakes_region
+                    region = region:zimbabwe_region
+                    region = region:madagascar_region
+                    
+                    #america ->
+                    region = region:colombia_region
+                    region = region:brazil_region
+                    region = region:la_plata_region
+                    region = region:chaco_region
+                    region = region:andes_region
+
+                    region = region:central_america_region
+                    region = region:mesoamerica_region
+                    region = region:caribbean_region
+                    region = region:aridoamerica_region
+                    region = region:west_coast_region
+                    region = region:great_plains_region
+                    region = region:east_coast_region
+                    region = region:canada_region
+                    region = region:alaska_region
+                    
+                    #australia ->
+                    region = region:australia_region
+                    region = region:new_zealand_region
+                    region = region:melanesia_region
+                }
+
+                is_ownable = yes
+                has_owner = no
+            }
+
+            save_scope_as = target_location
+            region = { save_scope_as = selected_region }
+        }
+        
+        if = {
+            limit = {
+                exists = scope:target_location
+                exists = scope:selected_region
+            }
+
+            random_country = {
+                limit = {
+                    is_real_country = yes
+                    capital.region = scope:selected_region
+                }
+                
+                save_scope_as = target_country
+            }
+
+            if = {
+                limit = { 
+                    exists = scope:target_country
+                    exists = scope:target_location
+                }
+
+                scope:target_country = {
+                    trigger_event_silently = er_random_loc.1
+                }
+            }
+        }
     }
 }

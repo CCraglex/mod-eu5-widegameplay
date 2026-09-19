@@ -1,0 +1,33 @@
+﻿namespace = er_random_loc
+
+er_random_loc.1 = {
+	type = country_event
+    hidden = yes
+
+    immediate = {
+
+		scope:target_location = {
+
+			create_country_from_location = {
+				overlord = root
+				change_government_type = government_type:monarchy
+				save_scope_as = target_country
+			}
+			add_core = scope:target_country
+			change_integration_level = core
+			change_max_raw_material_workers = 1
+        }
+
+		cancel_subject = scope:target_country
+
+        scope:target_country = {
+            discover_area = scope:target_location.area
+
+			add_gold = 100
+			add_country_modifier = { 
+				modifier = er_rising_nation_modifier
+				years = 25
+			}
+        }
+	}
+}

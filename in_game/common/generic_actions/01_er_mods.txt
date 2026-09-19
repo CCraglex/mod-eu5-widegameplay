@@ -1,0 +1,21 @@
+﻿##disable parliament cb
+#REPLACE:prepare_for_war = {
+#	type = parliament
+#	show_message_to_target = no
+#
+#	sound = PARLIAMENT_PREPARE_FOR_WAR
+#	
+#	automation_tick = daily
+#	automation_tick_frequency = 7
+#	player_automated_category = parliament
+#
+#	allow = {
+#		always = no
+#	}
+#	
+#	select_trigger = {
+#	}
+#
+#	effect = {
+#	}
+#}

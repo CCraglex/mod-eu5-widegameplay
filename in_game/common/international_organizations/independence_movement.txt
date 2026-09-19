@@ -101,36 +101,18 @@
 		current_date > 1340.1.1
 
 		or = {
-			custom_tooltip = {
-				text = independence_movement_hyw_eng_fra
+			#custom_tooltip = {
+				#text = independence_movement_hyw_eng_fra
 				and = {
 					is_situation_active = situation:hundred_years_war
-					root = { has_or_had_tag = ENG }
+					scope:target = { has_or_had_tag = FRA }
+					original_capital ?= { region = region:france_region }
+				}
+
+				and = {
 					not = { scope:target = { has_or_had_tag = FRA } }
 				}
-			}
-			
-			custom_tooltip = {
-				text = independence_movement_hyw_fra_eng
-				and = {
-					is_situation_active = situation:hundred_years_war
-					root = { has_or_had_tag = FRA }
-					not = { scope:target = { has_or_had_tag = ENG } }
-				}
-			}
-
-			custom_tooltip = {
-			text = independence_movement_hyw
-				and = { 
-					is_situation_active = situation:hundred_years_war
-					not = { root = { has_or_had_tag = ENG } }
-					not = { root = { has_or_had_tag = FRA } }
-				}
-			}
-			
-			not = { is_situation_active = situation:hundred_years_war }
-
-			not = { exists = scope:recipient }
+			#}
 		}
 
 		is_rebel_country = no

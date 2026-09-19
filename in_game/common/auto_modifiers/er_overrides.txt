@@ -38,7 +38,7 @@
 	combined_arms_min_percent_for_bonus = 0.1
 	combined_bonus_per_type = 0.025
 	
-	annexation_speed_base = 1
+	annexation_speed_base = 0.5
 	
 	tolerance_own = 1
 	tolerance_heathen = -5
@@ -77,7 +77,7 @@
 	maximum_religious_influence = 100
 	
 	global_pop_assimilation_speed = 0.005
-	global_pop_conversion_speed = 0.01
+	global_pop_conversion_speed = 0.005
 	
 	diplomatic_range = 1000
 	naval_range = 1000

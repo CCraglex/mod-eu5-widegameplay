@@ -1,57 +1,20 @@
-﻿cb_subjugate_neighbor = {
-    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
-    create_visible = {
-
-        scope:target = {
-            is_real_country = yes
-        }
-
-        NOT = { 
-            scope:target = { 
-                is_member_of_international_organization = international_organization:hre 
-            } 
-        }
-
-        current_age = age_1_traditions
-
-        OR = {
-            is_neighbor_of = scope:target
-            any_subject = {
-                NOT = { is_subject_type = tributary }
-                is_neighbor_of = scope:target
-            }
-        }
-    }
-
-    # 2. Creation: Can we actually generate this CB against the target?
-    create_enabled = {
-    }
-
-    # 3. Declaration: Ensure you can actually click the declare button
+﻿REPLACE:cb_hegemon_ultimatum = {
+	create_visible = {
+		#automatically given to the hegemon when the target refuses to accept their demand
+		always = no
+	}
     declare_enabled = {
+        always = no
     }
-
-    war_goal_type = subjugate_neighbor
-    can_expire = yes
-
-    ai_will_do = {
-        add = { value = 20 }
-
-        if = {
-            limit = {
-                current_year >= 1360
-            }
-            add = {
-                desc = "obsolete"
-                value = -200
-            }
-        }
-    }
+	war_goal_type = take_capital_enforce_hegemon_demands
+    ai_will_do = { subtract = { value = 10000 } }
 }
 
 cb_border_feuds = {
     # 1. Visibility: Everyone can see this CB option in the diplomacy UI
     create_visible = {
+
+        current_year < 1500
         scope:target = {
             is_real_country = yes
         }
@@ -69,8 +32,6 @@ cb_border_feuds = {
                 is_neighbor_of = scope:target
             }
         }
-
-        current_age = age_2_renaissance
     }
 
     create_enabled = {
@@ -90,77 +51,14 @@ cb_border_feuds = {
     war_goal_type = border_feuds
     can_expire = yes
 
-    ai_will_do = {
-        add = { value = 80 }
-
-        if = {
-            limit = {
-                current_year >= 1537
-            }
-            add = {
-                desc = "obsolete"
-                value = -200
-            }
-        }
-    }
-}
-
-cb_conquest_campaign = {
-    # 1. Visibility: Everyone can see this CB option in the diplomacy UI
-    create_visible = {
-        scope:target = {
-            is_real_country = yes
-        }
-        
-        NOT = { 
-            scope:target = { 
-                is_member_of_international_organization = international_organization:hre 
-            } 
-        }
-
-        OR = {
-            current_age = age_3_discovery
-            current_age = age_4_reformation
-        }
-    
-        OR = {
-            is_neighbor_of = scope:target
-            any_subject = {
-                NOT = { is_subject_type = tributary }
-                is_neighbor_of = scope:target
-            }
-        }
-    }
-
-    # 2. Creation: Can we actually generate this CB against the target?
-    create_enabled = {
-    }
-
-    # 3. Declaration: Ensure you can actually click the declare button
-    declare_enabled = {
-    }
-
-    # 4. Province Target Validation: Which provinces can be selected as the war goal?
-    # According to the readme: root = province, scope:actor = you, scope:recipient = target
-    province = {
-        # Any province owned by the target that borders you is valid to target
-        owner = scope:recipient
-        any_location_in_province = {
-            is_neighbor_of = scope:actor
-        }
-    }
-
-    war_goal_type = conquest_campaign
-    can_expire = yes
-
-    ai_will_do = {
-        add = { value = 50 }
-    }
+    ai_will_do = { add = { value = 100 } }
 }
 
 cb_conquest_for_province = {
     # 1. Visibility: Everyone can see this CB option in the diplomacy UI
     create_visible = {
+
+        current_year > 1499
         scope:target = {
             is_real_country = yes
         }
@@ -171,10 +69,6 @@ cb_conquest_for_province = {
             } 
         }
 
-        OR = {
-            current_age = age_5_absolutism
-            current_age = age_6_revolutions
-        }
         OR = {
             is_neighbor_of = scope:target
             any_subject = {
@@ -194,9 +88,7 @@ cb_conquest_for_province = {
     war_goal_type = conquest_for_province
     can_expire = yes
     
-    ai_will_do = {
-        add = { value = 50 }
-    }
+    ai_will_do = { add = { value = 300 } }
 }
 
 ### Russia
@@ -204,25 +96,20 @@ cb_conquest_for_province = {
 cb_unify_the_rus = {
     # 1. Visibility: Everyone can see this CB option in the diplomacy UI
     create_visible = {
-        always = yes
-        OR = {
-            NOT = {
-                current_age = age_1_traditions
-                current_age = age_2_renaissance
-            }
+        is_real_country = yes
+
+        culture ?= {
+            has_culture_group = culture_group:russian_group
         }
+        
+        always = yes
     }
 
     # 2. Creation: Can we actually generate this CB against the target?
     create_enabled = {
         # Check that the target isn't yourself
         NOT = { this = scope:target }
-        OR = {
-            NOT = {
-                current_age = age_1_traditions
-                current_age = age_2_renaissance
-            }
-        }
+        current_date >= 1400.1.1
 
 		culture ?= {
 			has_culture_group = culture_group:russian_group
@@ -249,16 +136,16 @@ cb_unify_the_rus = {
             }
         }
 
-        ai_will_do = {
-            add = 500
-        }
+
     }
 
     declare_enabled = {
     }
-
-    	
-	ai_will_do = 30
+    
+    ai_will_do = {
+        add = { value = 1000 }
+    }
+    
 	ai_subjugation_desire = -100
     
     war_goal_type = unification_of_russia
@@ -302,6 +189,7 @@ cb_war_on_empire = {
 cb_hre_conflict = {
     create_visible = {
         
+        current_year < 1500
         is_member_of_international_organization = international_organization:hre
 
         scope:target = {
@@ -320,14 +208,44 @@ cb_hre_conflict = {
 
     # 2. Creation: Can we actually generate this CB against the target?
     create_enabled = {
-        scope:target = {
-            is_rival_of = scope:actor
-        }
     }
 
     declare_enabled = {
     }
     
+    ai_will_do = { add = { value = 100 } }
     war_goal_type = hre_feud
+    can_expire = yes
+}
+
+cb_hre_conflict_modern = {
+    create_visible = {
+        
+        current_year > 1500
+        is_member_of_international_organization = international_organization:hre
+
+        scope:target = {
+            is_member_of_international_organization = international_organization:hre
+            is_real_country = yes
+        }
+
+        OR = {
+            is_neighbor_of = scope:target
+            any_subject = {
+                NOT = { is_subject_type = tributary }
+                is_neighbor_of = scope:target
+            }
+        }
+    }
+
+    # 2. Creation: Can we actually generate this CB against the target?
+    create_enabled = {
+    }
+
+    declare_enabled = {
+    }
+    
+    ai_will_do = { add = { value = 250 } }
+    war_goal_type = hre_feud_modern
     can_expire = yes
 }

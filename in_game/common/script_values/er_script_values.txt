@@ -9,3 +9,85 @@ er_legislative_efficiency_value = {
 er_diplomatic_reputation_value = {
     value = "modifier:diplomatic_reputation"
 }
+
+
+# these use first/second as scopes.
+REPLACE:alliance_upkeep_cost = {
+	add = {
+		desc = "UPKEEP_BASE_VALUE"
+		value = 0.5
+	}
+	add = {
+		desc = "RELATIVE_ECO_BASE"
+		value = scope:second.country_economical_base
+		divide = {
+			value = scope:first.country_economical_base
+			min = 1 
+		}
+		multiply = 2.5
+		min = 0.1
+		max = 5.0
+	}
+
+	if = {
+		limit = {
+			scope:second = {
+				is_great_power = yes
+			}
+		}
+
+		multiply = {
+			value = 2.5
+			desc = "UPKEEP_THEY_GREAT_POWER"
+		}
+	}
+
+	if = {
+		limit = {
+			scope:second = {
+				is_regional_power = yes
+			}
+		}
+
+		multiply = {
+			value = 1.5
+			desc = "UPKEEP_THEY_REGIONAL_POWER"
+		}
+	}
+
+	add = {
+		desc = "UPKEEP_BLOC_SATURATION"
+		value = scope:first.powerful_ally_weight
+		subtract = 1
+		multiply = 0.3
+		min = 0
+	}
+
+}
+
+er_colony_cost_percentage = {
+    value = scope:actor.num_colonial_charters
+    subtract = 1
+    multiply = 6
+    multiply = scope:actor.num_colonial_charters
+    divide = scope:actor.monthly_income_total
+}
+
+er_kyiv_loc_count = {
+
+	every_owned_location = {
+		if = {
+			limit = {
+				owner = {this = c:KIE}
+
+				OR = {
+					region = region:steppes_region
+					region = region:russian_region
+					region = region:ural_region
+				}
+			}
+
+			add = 1
+		}
+	}
+}

@@ -1,0 +1,280 @@
+﻿
+REPLACE:create_colonial_charter = {
+	type = owncountry
+	
+	potential = {
+		scope:actor = {
+			num_provinces > 0
+			is_rebel_country = no
+			NOT = { country_type = building }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			total_population >= 5
+		}
+	}
+	ai_tick = monthly
+	ai_tick_frequency = 6
+	automation_tick = monthly
+	automation_tick_frequency = 1
+
+	player_automated_category = colonies
+	
+	price = price:create_colonial_charter
+
+	select_trigger = {
+		top_widget = colony_item_card_at_province_select
+		looking_for_a = province_definition
+		source = actor
+		source_flags = possible_colonial_charters
+		target_flag = target
+		cache_targets = yes #these are the same no matter where we're coming from
+		name = "create_colonial_charter_select_province_definition"
+		none_available_msg_key = "create_colonial_charter_no_provinces"
+		pre_evaluation_sort_value = {
+			value = "scope:actor.colonial_charter_distance(root)"
+			multiply = -1 # closer = higher score = evaluated fully first
+		}
+		pre_evaluation_number_to_evaluate_fully = 10
+		column = {
+			data = colonial_charter
+		}
+
+		enabled = {
+			scope:actor = {
+				is_valid_colonial_charter = prev
+
+				OR = {
+					custom_tooltip = {
+						text = er_neighbor
+
+						# Always allow neighboring provinces
+						prev = {
+							any_location_in_province_definition = {
+								region = scope:actor.capital.region
+								is_neighbor_of_country_or_across_one_seazone = scope:actor
+							}
+						}
+					}
+
+					custom_tooltip = {
+						text = er_gp_or_colony_valid_locs
+						OR = {
+							is_great_power = yes
+							is_colonial_overlord = yes						
+						
+							NOT = {
+								prev = {
+									any_location_in_province_definition = {
+										continent = scope:actor.capital.continent
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			# African ruleset
+			OR = {
+				custom_tooltip = {
+					text = er_africa_extended
+					
+					OR = {
+						prev = {
+							any_location_in_province_definition = {
+								is_coastal = yes
+								continent = continent:africa
+
+								OR = {
+									region = region:macaronesia_region 
+									region = region:maghreb_region 
+									region = region:southern_africa_region 
+								}
+							}
+						}
+						
+						AND = {
+							scope:actor = {
+								has_advance = er_extended_colonization
+							}
+
+							prev = {
+								any_location_in_province_definition = {
+									is_coastal = yes
+									continent = continent:africa
+								}
+							}
+						}
+					}
+				}
+				custom_tooltip = {
+					text = er_africa_advanced
+					
+					AND = {
+						scope:actor = {
+							has_advance = er_advanced_colonization
+						}
+
+						prev = {
+							any_location_in_province_definition = {
+								continent = continent:africa
+							}
+						}
+					}
+				}
+
+				OR = {
+					scope:actor.capital.continent = continent:africa
+
+					NOT = {
+						any_location_in_province_definition = {
+							continent = continent:africa
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			if = {
+				limit = {
+					exists = scope:target
+				}
+				create_colonial_charter = {
+					target = scope:target
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = "scope:actor.colonial_charter_utility(scope:target)"
+		
+		if = {
+			limit = {
+				scope:actor = {
+					er_colony_cost_percentage > 0.05
+				}
+			}
+			subtract = 10
+		}
+		else_if = {
+			limit = {
+				scope:actor = {
+					er_colony_cost_percentage > 0.15
+				}
+			}
+			subtract = 25
+		}
+		else = {
+			limit = {
+				scope:actor = {
+					er_colony_cost_percentage > 0.2
+				}
+			}
+			subtract = 250
+		}
+
+		# Encourage capable countries and nearby/home-region colonization
+		if = {
+			limit = {
+				OR = {
+					scope:actor = {
+						OR = {
+							is_great_power = yes
+							is_colonial_subject = yes
+
+							country_tax_base > 1000
+						}
+					}
+
+					AND = {
+						scope:actor = {
+							country_tax_base > 50
+						}
+
+						scope:target = {
+							any_location_in_province_definition = {
+								region = scope:actor.capital.region
+							}
+						}
+					}
+				}
+			}
+
+			add = 50
+		}
+		else = {
+			add = -500
+		}
+	}
+}
+
+REPLACE:abandon_colonial_charter = {
+	type = owncountry
+	
+	ai_tick = monthly
+	ai_tick_frequency = 3
+
+	automation_tick = monthly
+	automation_tick_frequency = 3
+	player_automated_category = colonies
+	
+	potential = {
+	}
+
+	allow = {
+	}
+	
+	price = price:abandon_colonial_charter
+	
+	select_trigger = {
+		looking_for_a = colonial_charter
+		source = actor
+		target_flag = target
+		name = "abandon_colonial_charter_select_colonial_charter"
+		none_available_msg_key = "abandon_colonial_charter_no_colonial_charters"
+		column = {
+			data = name
+		}
+		visible = {
+			owner = scope:actor
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+			}
+			abandon_colonial_charter = scope:target
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				scope:actor = {
+					er_colony_cost_percentage > 0.25
+				}
+			}
+			add = 10000
+		}
+
+		if = {
+			limit = {
+				exists = scope:target.province_definition
+			}
+			subtract = "scope:actor.colonial_charter_utility(scope:target.province_definition)"
+		}
+		else = {
+			subtract = 1000
+		}
+	}
+}

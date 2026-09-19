@@ -1,6 +1,8 @@
 ﻿NCountry = {
 	ANNEX_BASE_COST = 50
 	ANNEX_COST_PER_LOCATION = 10.0
+
+	LEVY_RECOVERY_MONTHS = 60
 }
 
 
@@ -14,10 +16,14 @@ NCombat = {
 
 NAI = {
 	AI_HIGH_CONQUER_DESIRE_THRESHOLD = 0.25
-}
 
-#???
-NPop = {
-	ARMY_LEVY_SIZE_IMPACT_SUPPORT = 0.5
-	NAVY_LEVY_SIZE_IMPACT_SUPPORT = 1.25
+	AI_CONQUER_DESIRE_DISTANCE_BASE = 100
+	AI_CONQUER_DESIRE_DISTANCE_PER_COUNTRY_SIZE = 0.5
+	AI_CONQUER_DESIRE_DISTANCE_PER_AGE = 100
+
+	AI_CONQUER_DESIRE_DISTANCE_MULTIPLIER = -0.075 #Penalty for ai to attack targets far away
+	AI_CONQUER_DESIRE_NAVAL_DISTANCE_MULTIPLIER = -0.5 #Penalty for ai to attack targets far away over sea, smaller number means more likely to attack
+	AI_CONQUER_DESIRE_MAX = 100
+	AI_CONQUER_DESIRE_THROUGH_SUBJECT_MULT = 0.35 # Score mult when you have to go through your subject to reach enemy
+	AI_CONQUER_DESIRE_CAPITAL_DISTANCE = 150 # After this map distance locations starts getting a penalty from being too far away from capital
 }

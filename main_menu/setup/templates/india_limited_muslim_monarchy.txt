@@ -1,0 +1,12 @@
+﻿include = "india_limited_monarchy"
+
+government = {
+
+	privilege = {
+		er_indian_decentralization
+	}
+	laws = {
+		legal_code_law = sharia_law_policy
+		immigration_law = open_borders_law
+	}
+}

@@ -1,0 +1,125 @@
+﻿situation_rise_of_russia = {
+    # This refers to the localization file where we will write the name and description
+    custom_description = "situation_rise_of_russia_desc"
+
+    monthly_spawn_chance = 100 
+
+    can_start = {
+		custom_tooltip = {
+			text = rise_of_rus_start_tt
+        	
+			current_date >= 1400.1.1
+			NOT = { exists = c:RUS } 
+		}
+    }
+
+    can_end = {
+		custom_tooltip = {
+			text = rise_of_rus_end_tt
+        	
+			country_exists = c:RUS
+		}
+    }
+
+    visible = {
+		always = yes
+    }
+
+    on_start = {
+    }
+
+	on_monthly = {
+
+		#remove opinion
+		every_country = {
+			limit = {
+				culture = { has_culture_group = culture_group:russian_group }
+			}
+			save_scope_as = current_actor
+
+			every_country = {
+				limit = {
+					not = { this = scope:current_actor }
+					has_opinion = { 
+						modifier = rus_unification_feud 
+						target = scope:current_actor
+					}
+				}
+
+				remove_opinion = {
+					target = scope:current_actor
+					modifier = rus_unification_feud
+				}
+			}
+		}
+
+		##add opinion
+		every_country = {
+			limit = {
+				culture = { has_culture_group = culture_group:russian_group }
+			}
+			save_scope_as = current_actor
+
+			every_country = {
+				limit = {
+					not = { in_union_with = scope:current_actor }
+					not = { this = scope:current_actor }
+					not = { is_subject_or_below_of = scope:current_actor }
+				}
+
+				add_opinion = {
+					target = scope:current_actor
+					modifier = rus_unification_feud
+				}
+			}
+		}
+
+		random_list = {
+			95 = {}
+
+			5 = {
+				random_country = {
+					limit = {
+						culture = { has_culture_group = culture_group:russian_group }
+						
+						any_province = {
+							any_location_in_province = {
+								integration_level = conquered
+							}
+						}
+					}
+
+					save_scope_as = target_country
+				}
+				
+				scope:target_country = {
+					trigger_event_non_silently = er_russia_rise.1
+				}
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = {
+				culture = { has_culture_group = culture_group:russian_group }
+			}
+			save_scope_as = current_actor
+
+			every_country = {
+				limit = {
+					not = { this = scope:current_actor }
+					has_opinion = { 
+						modifier = rus_unification_feud 
+						target = scope:current_actor
+					}
+				}
+
+				remove_opinion = {
+					target = scope:current_actor
+					modifier = rus_unification_feud
+				}
+			}
+		}
+	} 
+}

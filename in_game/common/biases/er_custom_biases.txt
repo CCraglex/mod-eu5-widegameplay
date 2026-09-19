@@ -1,0 +1,4 @@
+﻿rus_unification_feud = {
+	value = -1000
+	yearly_decay = 0
+}

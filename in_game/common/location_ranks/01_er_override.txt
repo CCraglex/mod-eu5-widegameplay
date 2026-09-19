@@ -2,6 +2,10 @@
 REPLACE:megalopolis = {
 	
 	rank_modifier = {
+
+		local_levy_size_modifier = -0.8
+		local_population_growth = -0.002
+
 		local_burghers_desired_pop = 4.0
 		local_laborers_desired_pop = 4.0
 		local_soldiers_desired_pop = 1.00
@@ -75,6 +79,10 @@ REPLACE:megalopolis = {
 REPLACE:city = {
 	
 	rank_modifier = {
+
+		local_levy_size_modifier = -0.8
+		local_population_growth = -0.002
+
 		local_burghers_desired_pop = 1.0
 		local_laborers_desired_pop = 1.0
 		local_soldiers_desired_pop = 0.25
@@ -138,6 +146,10 @@ REPLACE:city = {
 REPLACE:town = {
 	
 	rank_modifier = {
+
+		local_levy_size_modifier = -0.25
+		local_population_growth = -0.001
+
 		local_burghers_desired_pop = 0.2
 		local_laborers_desired_pop = 0.2
 		local_soldiers_desired_pop = 0.1
@@ -186,7 +198,7 @@ REPLACE:rural_settlement = {
 		local_max_rgo_size_modifier = 1.0
 		local_monthly_food_modifier = 0.1
 		
-		local_population_growth = 0.001
+		local_population_growth = 0.0015
 		
 		local_peasant_enfranchisment = -0.2
 	}

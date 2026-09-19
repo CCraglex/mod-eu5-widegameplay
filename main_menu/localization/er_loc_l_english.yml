@@ -5,10 +5,19 @@
  AUTO_MODIFIER_NAME_admin_efficiency_coring: "Legislative Efficiency Impact"
  AUTO_MODIFIER_DESC_admin_efficiency_coring: "Optimized administrative channels and experienced bureaucrats drastically reduce the time needed to establish formal state authority over new lands."
 
+ AUTO_MODIFIER_NAME_er_no_complacency: "No complacency"
+ AUTO_MODIFIER_DESC_er_no_complacency: "removes the complacency gain"
+
+ AUTO_MODIFIER_NAME_er_num_colonies_cost: "Monthly colonial cost"
+ AUTO_MODIFIER_DESC_er_num_colonies_cost: "Monthly colonial cost. calcualted by the third power of one less of active charter count"
+
+ AUTO_MODIFIER_NAME_er_rise_of_turks_buff: "Strongest Beylik"
+ AUTO_MODIFIER_DESC_er_rise_of_turks_buff: "We are here to create the strongest empire and we are in the prime spot for it."
 # ==========================================
  # 1. SUBJUGATE NEIGHBOR
  # ==========================================
  cb_subjugate_neighbor: "Subjugate Neighbor"
+ cb_subjugate_neighbor_PROV: "Subjugate Neighbor"
  cb_subjugate_neighbor_desc: "This neighboring state is vulnerable and strategically vital. We must assert our dominance and force them into perpetual vassalage to secure our borders."
  
  war_goal_subjugate_neighbor: "Enforce Subjugation"
@@ -18,15 +27,18 @@
  # 2. BORDER FEUDS
  # ==========================================
  cb_border_feuds: "Exploit Border Feuds"
+ cb_border_feuds_PROV: "Exploit Border Feuds"
  cb_border_feuds_desc: "Local cross-border skirmishes and historic grievances have given us a perfect excuse to strike. We will use the chaos to push our frontier outward."
  
  war_goal_border_feuds: "Secure the Frontier [PROVINCE.GetName]"
+ war_goal_border_feuds_PROV: "Secure the Frontier [PROVINCE.GetName]"
  war_goal_border_feuds_desc: "Our frontier garrisons are locked in bloody feuds over Claims on [PROVINCE.GetName]. We must occupy this contested region to permanently establish order under our banner."
 
  # ==========================================
  # 3. CONQUEST CAMPAIGN
  # ==========================================
  cb_conquest_campaign: "Launch Conquest Campaign"
+ cb_conquest_campaign_PROV: "Launch Conquest Campaign"
  cb_conquest_campaign_desc: "A calculated war of raw territorial expansion. We have organized our logistics and administration for a wide-scale campaign to permanently annex their territory."
  
  war_goal_conquest_campaign: "Conquer [PROVINCE.GetName]"
@@ -36,11 +48,11 @@
  # 4. CONQUER ENEMY
  # ==========================================
  cb_conquest_for_province: "Conquer Enemy"
+ cb_conquest_for_province_PROV: "Claims on [PROVINCE.GetName]"
  cb_conquest_for_province_desc: "Our deep-seated rivalry with this nation has reached a boiling point. We should use this moment to crush our enemy."
  
- war_goal_conquest_for_province: "Conquer our enemies"
- war_goal_conquest_for_province_desc: "Our sworn enemies must be brought to heel. By targeting [PROVINCE.GetName], we strike a critical blow to their economy and claim our rightful dominion over their territory."
-
+ war_goal_conquest_for_province: "Conquer Our Enemies"
+ war_goal_conquest_for_province_desc: "Our sworn enemies must be brought to heel. War goal is [PROVINCE.GetName]."
  # ==========================================
  # mamluk privilege
  # ==========================================
@@ -52,11 +64,9 @@
  mamluk_balance.1.a: "Satisfy the military households, formalize the Iqta."
 
  mamluk_balance.2.title: "The Mamluk Modernization"
- mamluk_balance.2.desc: "By systematically breaking the autonomy of the regional Iqta lords, the Crown has finally reasserted dominance over the military state.\n\nThe old, corrupt system is shattered. In its place, a reorganized, highly centralized military corps rises to protect the realm. \n A new privilege is unlocked."
+ mamluk_balance.2.desc: "By systematically breaking the autonomy of the regional Iqta lords, the Crown has finally reasserted dominance over the military state.\n\nThe old, corrupt system is shattered. In its place, a reorganized, highly centralized military corps rises to protect the realm."
  mamluk_balance.2.a: "A new era begins for our cavalry force!"
 
- p_reformed_mamluk_corps: "Reformed Mamluk Corps"
- p_reformed_mamluk_corps_desc: "By sweeping away the decentralized and corrupt regional Iqta system, the central crown has completely restructured our elite forces.\n\nNo longer autonomous warlords extracting local taxes, the modernized Mamluk cavalry is now fully professional, tightly integrated into the state apparatus, and intensely loyal to the centralized command of the Sultan. This elite corps forms the unshakeable iron vanguard of our empire."
  # ==========================================
  # france nerf
  # ==========================================
@@ -102,11 +112,19 @@
  cb_war_on_empire_desc: "As an outsider, we seek to break into the boundaries of the Empire and wrest land from its princes."
  
  cb_hre_conflict: "Imperial Rival Feud"
+ cb_hre_conflict_PROV: "Imperial Rival Feud"
  cb_hre_conflict_desc: "A formal dispute settled by arms against a hated regional rival within the Holy Roman Empire."
+
+ cb_hre_conflict_modern: "HRE Regional Unification War"
+ cb_hre_conflict_modern_PROV: "HRE Regional Unification War"
+ cb_hre_conflict_modern_desc: "A casus belli created to claim land within the HRE."
 
  war_goal_war_on_empire: "Subjugate the Imperial Frontier"
  war_goal_war_on_empire_desc: "Our primary objective is to conquer provinces along the outer rim of the Holy Roman Empire. War goal is to occupy capital."
  
+ war_goal_hre_feud_modern: "Conquer the enemies"
+ war_goal_hre_feud_modern_desc: "War goal is to occupy the capital"
+
  war_goal_hre_feud: "Settle the Princely Feud"
  war_goal_hre_feud_desc: "We are fighting to enforce our dynastic dominance and humiliate our rival within the legal frameworks of the Empire. War goal is to occupy capital."
 
@@ -121,6 +139,106 @@ er_horde.2.desc: "Our banners fly proudly over the battlefield, and our enemies 
 er_horde.2.a: "Our strength is unquestioned."
 
 #hyw:
-independence_movement_hyw_eng_fra: "England supporting NON French vassals during HYW"
-independence_movement_hyw_fra_eng: "France supporting NON English vassals during HYW"
-independence_movement_hyw: "We are not France or England during HYW"
+independence_movement_hyw_eng_fra: "Due to uncertainity French subjects' independence cannot be supported in Hundred Years War unless our capital is in France region"
+
+#ror:
+situation_rise_of_russia: "Rise of Russia"
+situation_rise_of_russia_desc: "The ancient lands of the Rus are fractured, caught between the declining Golden Horde, a powerful Lithuania, and ambitious local princes. The race to unify and assert the title of 'All Russia' has begun."
+rus_unification_feud: "Struggle for the Rus Throne"
+rise_of_rus_start_tt: "This situation can start if Russia hasn't been formed yet and its beyond 1400."
+rise_of_rus_end_tt: "This situation will end once Russia forms."
+
+er_russia_rise.1.title: "A Province Integrated!"
+er_russia_rise.1.desc: "With the new lands being added rapidly, we have been trying to increase our attempts at integratingnewly conquered locations. Lately one of our conquered provinces have shown great progress."
+er_russia_rise.1.a: "A great progress for the establishment of our great empire."
+
+#levy changes:
+AUTO_MODIFIER_NAME_small_nation_levy_buff: "Sovereign Defence Levies"
+AUTO_MODIFIER_NAME_small_nation_levy_buff_desc: "Smaller realms mobilize a much higher proportion of their population to guarantee their survival against larger neighbors."
+
+#frontier
+expansion_into_wilds: "Expansion into wilds"
+expansion_into_wilds_desc: "Our nations is trying the possiblities of taming a new location"
+expansion_into_wilds_active: "Expanding into wilderness"
+expansion_into_wilds_action: " action"
+expansion_into_wilds_action_progress: " action progress"
+expansion_into_wilds_action_progress_wordier: " action current progress"
+expansion_into_wilds_action_progress_long_wordier: " action current progress"
+expansion_into_wilds_action_progress_tooltip: "Expansion into wilds action progress"
+
+#Colony
+COLONY_DYNAMIC_PREFIX_NAME: "[Root.GetOverlord.GetAdjective] [Root.GetRegionName]"
+
+#timur
+er_timur.1.entry: "A Persian Empire?"
+er_timur.1.title: "A Persian Empire?"
+er_timur.1.desc: "Even though we are the people of the steppes it is becoming incredibly obvious that our empire is based on persia. Maybe it is time to take the step and claim our title as the shah of the persia? (We will give up subjects located outside persian region if we become persia)"
+
+er_timur.1.a: "It is time to build a stong empire."
+er_timur.1.b: "We will not leave our roots."
+
+
+#Tur-Mam
+
+EGT_f: "Turkish Egypt"
+
+claim_egypt_entry: "Claim the Caliphate"
+claim_egypt_desc: "It's time we make the move and seize the capital of the rotten state of Mamluks!"
+
+war_goal_claim_egypt: "Take the capital"
+war_goal_claim_egypt_desc: "The war goal is to occupy the capital"
+
+cb_destroy_mamluks: "Defeat the Mamluks"
+cb_destroy_mamluks_PROV: "Defeat the Mamluks"
+cb_destroy_mamluks_desc: "We should defeat the Mamluks and conquer their lands"
+
+
+er_tur.1.entry: "A Prime Target"
+er_tur.1.title: "A Prime Target"
+er_tur.1.desc: "The Mamluks, current owners of the vast Egypt, is in a weakened state. Our empire is strong and ready to claim the caliphate from their weak sultanate. We the sublime Turkish state, should seize this opportunity and defeat them!"
+
+er_tur.1.a: "We should use this chance"
+
+
+###india nerf
+er_indian_decentralization: "Extreme Decentralizated Administration"
+er_indian_decentralization_desc: "Indian states relied heavily on subjects to administer their land due to the difficulties of terrain and its hard to govern areas."
+
+p_er_indian_decentralization: "Extreme Decentralizated Administration"
+p_er_indian_decentralization_desc: "Indian states relied heavily on subjects to administer their land due to the difficulties of terrain and its hard to govern areas."
+
+STATIC_MODIFIER_NAME_er_rising_nation_modifier: "A Rising Nation"
+er_rising_nation_modifier_desc: "A newly established nation is emerging from here."
+
+
+###Colony localization:
+er_neighbor: "The province is our neighbor"
+er_gp_or_colony_valid_locs: "The charter is not in the same continent with our capital AND we are a colonial power or a GP"
+
+er_africa_extended: "We have researched 'Basic African Colonization' advance, AND the charter is an African coast within allowed regions OR in a safe to colonize African region"
+er_africa_advanced: "Charter is an African charter and we researched 'Advanced Colonization'"
+
+er_charter.1.a: "Create a new colony."
+er_charter.1.b: "Join to our existing colony."
+er_charter.1.c: "Great. Let's keep the land."
+er_charter.1.d: "Maybe i should've join them too..."
+### Techs:
+er_extended_colonization: "Basic African Colonization"
+er_extended_colonization_desc: "Colonizing parts of Africa is very difficult due to reasons like malaria and other factors. By implementing new strategies we can establish colonies further into Africa"
+
+er_advanced_colonization: "Advanced Colonization"
+er_advanced_colonization_desc: "As out medicine tech improves our abilities of colonization also increases. With this advance we will be able to colonize rest of Africa."
+
+
+### Kiev:
+er_kie.1.entry: "The unification of Rus"
+er_kie.1.title: "The unification of Rus"
+er_kie.1.desc:  "With our recent conquests, we are closer than ever to unify the lands of rus under our banner. Some of our advisors have been recommending that we should move our capital to a more central location and they claim Vladimir is the best spot for our nation. Should we move our capital?"
+
+er_kie.1.a: "Obviously. We are the rightful rulers of Russia and beyond."
+er_kie.1.b: "Kyiv is too important for us."
+
+kie_enough_locs_loc: "We at least 536 locations in Russia, Urals and Pontic steppe."
+
+STATIC_MODIFIER_NAME_er_kyiv_nerf_modifier: "Collapse Of Kiev"
+er_kyiv_nerf_modifier_desc: "From the devastation left by the Mongol invasions to the growing pressure of Lithuania and the Golden Horde, the Principality of Kyiv struggles to maintain its independence. Weak institutions, declining influence, and external threats leave the state vulnerable to collapse. The coming years will be very troublesome."

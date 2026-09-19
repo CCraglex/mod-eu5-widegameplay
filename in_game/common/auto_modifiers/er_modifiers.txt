@@ -14,8 +14,54 @@ diplo_rep_annexation_impact = {
     scales_with = {
         # Must be bracketed to prevent the parser from choking on the next line
         value = er_diplomatic_reputation_value
-        multiply = 0.075
+        multiply = 1
     }
     
-    annexation_speed_base = 1
+    annexation_speed_base = 0.025
 }
+
+er_no_complacency = {
+    potential_trigger = { Always = yes }
+    monthly_complacency = -0.5
+}
+
+er_num_colonies_cost = {
+    potential_trigger = {
+        num_colonial_charters > 0
+    }
+
+	scales_with = {
+        value = num_colonial_charters
+        subtract = 1
+        multiply = 6
+        multiply = num_colonial_charters
+		
+		min = 0
+		max = 1000000
+	}
+
+	monthly_gold_expense = 1
+}
+
+er_rise_of_turks_buff = {
+
+    potential_trigger = {
+        OR = {
+            situation:rise_of_the_ottomans.var:strongest_beylik_variable ?= { this = root }
+
+            AND = {
+                NOT = {is_situation_active = situation:rise_of_the_ottomans}
+                this = c:TUR
+            }
+        }
+    }
+
+    global_war_score_efficiency = 0.1
+}
+
+#small_nation_levy_buff = {
+#    scales_with = {
+#        value = small_nation_levy_tier
+#    }
+#    global_levy_size_modifier = 1.0 
+#}
